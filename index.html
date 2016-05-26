@@ -1,6 +1,15 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<script type="text/javascript">
+  //<![CDATA[
+  function RedirNonHttps() {
+    if (location.href.indexOf("http://") == -1) {
+      location.href = location.href.replace("https://", "http://");
+    }
+  }
+  //]]>
+</script>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 <title>reddit.tv</title>
 
@@ -39,7 +48,7 @@
   }
 </script>
 </head>
-<body>
+<body onload="RedirNonHttps();">
 <div id="gutter-1"></div>
 <div id="gutter-2"></div>
 <div id="content-wrapper">
