@@ -32,12 +32,12 @@ var vimeo = {
     createEmbed: function(url){
         var ID, created = {};
         ID = url.match(/\/(\d+)/);
-        
+
         if(ID){
             ID = ID[1];
-        }        
+        }
         if(ID){
-            created.embed = "&lt;iframe src=\"http://player.vimeo.com/video/"+ID+"\" width=\"600\" height=\"338\" frameborder=\"0\" webkitallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;";
+            created.embed = "&lt;iframe src=\"https://player.vimeo.com/video/"+ID+"\" width=\"600\" height=\"338\" frameborder=\"0\" webkitallowfullscreen allowfullscreen&gt;&lt;/iframe&gt;";
             created.thumbnail = null;
             return created;
         }else{
@@ -48,7 +48,7 @@ var vimeo = {
     // prepares embed code for js api access
     prepEmbed: function(embed) {
         var split, js_str = '?api=1&player_id=vimeoplayer';
-        
+
         if(embed.indexOf('" width="') !== -1){
             split = embed.indexOf('" width="');
             embed = embed.substr(0,split)+js_str+embed.substr(split);
@@ -56,7 +56,7 @@ var vimeo = {
             split = embed.indexOf('src="');
             embed = embed.substr(0,split)+'id="vimeoplayer" '+embed.substr(split);
         }
-    
+
         return embed;
     },
 
@@ -79,12 +79,12 @@ var vimeo = {
 
     addListeners: function(){
         vimeo.obj = document.getElementById("vimeoplayer");
-        window.addEventListener("message", vimeo.receiveMessage, false);  
+        window.addEventListener("message", vimeo.receiveMessage, false);
     },
 
     sendMsg: function(msg){
         var target = vimeo.obj.contentWindow;
-        target.postMessage(msg, 'http://player.vimeo.com/');
+        target.postMessage(msg, 'https://player.vimeo.com/');
     },
 
     receiveMessage: function(msg){
