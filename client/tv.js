@@ -360,7 +360,7 @@ $().ready(function(){
     }
     else {
 
-        loadChannel("Videos", null);
+        loadChannel("All", null);
     }
 
 
