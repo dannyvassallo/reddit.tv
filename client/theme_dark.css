@@ -1,0 +1,150 @@
+@media (max-width:1170px) {
+
+  #gutter-1 {
+
+    left: 0px !important;
+    margin-left: auto !important;
+  }
+
+  #gutter-2 {
+    right: 0px !important;
+    margin-right: auto !important;
+  }
+}
+
+#gutter-1 {
+  left: 50%;
+  margin-left: -575px;
+  top: 0px;
+  z-index: -1;
+  position: absolute;
+  width: 500px;
+  background-repeat: no-repeat;
+  background: url("../img/left-big-2.jpg");
+  height: 600px;
+}
+
+#gutter-2 {
+  right: 50%;
+  margin-right: -575px;
+  top: 0px;
+  width: 499px;
+  position: absolute;
+  z-index: -2;
+  height: 610px;
+  background-repeat: no-repeat;
+  background: url("../img/right-big-2.jpg");
+}
+
+body {
+    background-color: black;
+}
+
+#video-display {
+    -moz-box-shadow: 5px 5px 5px darkblue;
+    -webkit-box-shadow: 5px 5px 5px darkblue;
+    box-shadow: 5px 5px 5px darkblue;
+    background-color: #575757;
+}
+
+#video-source {
+    color: #333333;
+}
+
+#video-title {
+    color: #AAA;
+}
+
+#video-title a {
+    color: #AAA;
+}
+
+#video-list {
+    border: 2px solid #333333;
+    background-color: black;
+}
+
+#video-list img {
+    border: 4px solid #333333;
+}
+
+#video-list .focus {
+    border: 6px solid #5f99cf;
+}
+
+#channel-list li, #promo-channel li {
+    color: black;
+    font-weight: bold;
+    background: rgba(255,255,255 -.2);
+}
+
+#channel-list li:hover, #promo-channel li:hover {
+    background-color: #e0e0e0;
+    background-color: rgba(256,256,256,0.2);
+    color: white;
+}
+
+#about {
+    border-top: 1px dashed #333;
+    color: #666;
+}
+
+#header {
+    color: gray;
+}
+
+#footer {
+    color: #333;
+}
+
+#also-like {
+    background: #222;
+    border: 1px solid #333;
+    color: #444;
+}
+
+#vote-button {
+    color: #5f99cf;
+}
+
+#channel-list .chan-selected, #promo-channel .chan-selected, .chan-selected li:hover {
+    color: darkblue;
+    -moz-box-shadow: 5px 5px 5px darkblue;
+    -webkit-box-shadow: 5px 5px 5px darkblue;
+    box-shadow: 5px 5px 5px darkblue;
+    background-color: #575757 !important;
+}
+
+#channel-name {
+    background: #444;
+    border-color: #555;
+    color: gray;
+}
+
+#channel-add {
+    background-color: #444;
+    color: gray;
+    border-color: #666;
+}
+
+#fill-nav {
+    background-color: white;
+}
+
+.nav-button {
+    -moz-box-shadow: 1px 1px 1px black, inset 1px 1px 1px gray;
+    -webkit-box-shadow: 1px 1px 1px black, inset 1px 1px 1px gray;
+    box-shadow: 1px 1px 1px black, inset 1px 1px 1px gray;
+    text-shadow: 0px 1px 1px hsla(0,0%,100%,.7);
+    color: black;
+    background-color: #575757;
+}
+
+a.nav-button:hover {
+    border: 1px solid gray;
+    color: darkblue;
+}
+
+.loading {
+    background-image: url('../img/loading_dark.gif');
+}

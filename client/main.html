@@ -3,23 +3,80 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
-  {{> info}}
+  {{> redditTv}}
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
+<template name="redditTv">
+  <div id="gutter-1"></div>
+  <div id="gutter-2"></div>
+  <div id="content-wrapper">
+    <div id="content">
+      <div id="header">
+        &nbsp;
+        <div id="options">
+          <ul id="css" class="right">
+                  <li><a href="#" rel="light">light</a></li>
+                  <li><a href="#" rel="dark">dark</a></li>
+          </ul>
 
-<template name="info">
-  <h2>Learn Meteor!</h2>
-  <ul>
-    <li><a href="https://www.meteor.com/try">Do the Tutorial</a></li>
-    <li><a href="http://guide.meteor.com">Follow the Guide</a></li>
-    <li><a href="https://docs.meteor.com">Read the Docs</a></li>
-    <li><a href="https://forums.meteor.com">Discussions</a></li>
-  </ul>
+          <form class="right">
+            <label for="sorting">sorting</label>
+            <select id="sorting">
+              <option value="hot">hot</option>
+              <option value="top:day">top today</option>
+              <option value="top:week">top week</option>
+              <option value="top:month">top month</option>
+              <option value="top:year">top year</option>
+            </select>
+            <input type="checkbox" id="auto" checked/>
+              <label for="auto">autoplay/advance</label>
+            <input type="checkbox" id="shuffle"/>
+              <label for="auto">shuffle</label>
+            <input type="checkbox" id="fill"/>
+              <label for="fill">fill screen</label>
+            <input type="checkbox" id="sfw" checked/>
+              <label for="sfw">sfw</label>
+          </form>
+        </div>
+      </div>
+      <div id="sidebar">
+        <div id="promo-channel"></div>
+        <div id="channel-list"></div>
+        <div id="add-channel">
+          <form id="add-channel-form" onSubmit="addChannel();return false;">
+            <input type="text" id="channel-name" value="subreddit" size="10"/>
+            <br/>
+            <input type="submit" id="channel-add" value="load"/>
+          </form>
+        </div>
+        <div id="about">
+          <a href="https://americancensorship.org" target="_blank">STOP CENSORSHIP</a>
+          <br/>
+          <br/><a href="https://reddit.com/r/reddit_tv" target="_blank" title="reddit.tv on reddit - bug reports, feature requests, channel suggestions">/r/reddit_tv</a>
+          <br/>
+          <br/><a href="https://github.com/octatone/reddit.tv" title="help improve reddit.tv" target="_blank">source</a>
+          <br/>
+          <br/><a href="mailto:marketing@reddit.com?subject=reddit.tv%20inquiry" title="advertise on reddit.tv" target="_blank">advertise</a>
+        </div>
+      </div>
+      <div id="video-display">
+        <div id="video-title"></div>
+        <div id="video-embed"></div>
+        <div id="video-source"></div>
+        <div id="video-nav">
+          <a id="prev-button" class="nav-button">&lt; PREV</a>
+          <a id="next-button" class="nav-button">NEXT &gt;</a>
+          <div id="vote-button"></div>
+        </div>
+        <div id="video-list"></div>
+      </div>
+      <div id="footer">keyboard shortcuts: ← ↑ ↓ → spacebar f c</div>
+      <div id="also-like">Enjoy reddit.tv?  You might also like <a href="https://radioreddit.com">radioreddit.com</a>!</div>
+    </div>
+  </div>
+  <div id="fill-overlay">
+    <div id="fill-nav">
+      exit fill screen
+    </div>
+  </div>
 </template>
