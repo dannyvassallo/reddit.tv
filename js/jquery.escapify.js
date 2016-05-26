@@ -1,12 +1,12 @@
 /*!
  * Escapify JQuery Plugin Library v0.1.0
- * http://www.therubinway.com/escapify
+ * https://www.therubinway.com/escapify
  *
  * Copyright 2010, Alan Rubin
  * Licensed under the MIT license.
  */
 (function($){
-	
+
 	// Escapify HTML
 	$.escapifyHTML = function(text){
 		if(text) {
@@ -15,7 +15,7 @@
 			return '$$_undefined_escapifyHTML()_$$';
 		}
 	};
-	
+
 	// Unescapify HTML
 	$.unescapifyHTML = function(text){
 		if(text) {
@@ -24,5 +24,5 @@
 			return '$$_undefined_unescapifyHTML()_$$';
 		}
 	};
-	
+
 })(jQuery);

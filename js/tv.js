@@ -338,10 +338,10 @@ function loadChannel(channel, video_id) {
     if(last_req !== null){
         last_req.abort();
     }
-    
+
     Globals.shuffled = [];
     Globals.cur_chan = this_chan;
-    
+
     $('#video-list').stop(true, true).animate({ height:0, padding:0 }, 500, function() {
         $(this).empty().hide();
     });
@@ -355,16 +355,16 @@ function loadChannel(channel, video_id) {
     $video_title.html('Loading '+title+' ...');
     $video_embed.addClass('loading');
     $video_embed.empty();
-    
+
     $('#channel-list>ul>li').removeClass('chan-selected');
     $('#channel-'+this_chan).addClass('chan-selected');
 
-    
+
 
     if(Globals.videos[this_chan] === undefined){
         var feed = getFeedURI(channel);
         Globals.cur_chan_req = $.ajax({
-            url: "http://www.reddit.com"+feed,
+            url: "https://www.reddit.com"+feed,
             dataType: "jsonp",
             jsonp: "jsonp",
             success: function(data) {
@@ -479,7 +479,7 @@ function loadPromoVideoList () {
         var thumbNail;
         if (Globals.promo.type === 'youtube') {
 
-            thumbNail = 'http://i2.ytimg.com/vi/' + this_video.id + '/hqdefault.jpg';
+            thumbNail = 'https://i2.ytimg.com/vi/' + this_video.id + '/hqdefault.jpg';
         }
 
         $thumbnail
@@ -525,7 +525,7 @@ function loadVideo(video) {
         //get normal key if shuffled already
         selected_video = Globals.shuffled.indexOf(selected_video);
     }
-     
+
     if(video === 'next' && selected_video <= videos_size){
         selected_video++;
         if(selected_video > videos_size){
@@ -613,12 +613,12 @@ function loadVideo(video) {
 
         $video_embed.empty();
         $video_embed.addClass('loading');
-        
+
         var embed = $.unescapifyHTML(Globals.videos[this_chan].video[selected_video].media_embed.content);
         embed = prepEmbed(embed, Globals.videos[this_chan].video[selected_video].domain);
         embed = prepEmbed(embed, 'size');
 
-        var redditlink = 'http://reddit.com'+$.unescapifyHTML(Globals.videos[this_chan].video[selected_video].permalink);
+        var redditlink = 'https://reddit.com'+$.unescapifyHTML(Globals.videos[this_chan].video[selected_video].permalink);
         $('#video-title').html('<a href="' + redditlink + '" target="_blank"'
                                + ' title="' + Globals.videos[this_chan].video[selected_video].title_quot + '">'
                                + Globals.videos[this_chan].video[selected_video].title_unesc + '</a>');
@@ -666,9 +666,9 @@ function loadVideoById(video_id) {
         if(last_req !== null){
             last_req.abort();
         }
-	
+
         Globals.cur_vid_req = $.ajax({
-            url: "http://www.reddit.com/by_id/t3_"+video_id+".json",
+            url: "https://www.reddit.com/by_id/t3_"+video_id+".json",
             dataType: "jsonp",
             jsonp: "jsonp",
             success: function(data) {
@@ -715,15 +715,15 @@ function loadPromo(type, id, desc){
 
     switch(type){
     case 'youtube':
-        url = 'http://www.youtube.com/watch?v=' + id;
+        url = 'https://www.youtube.com/watch?v=' + id;
         break;
     case 'vimeo':
-        url = 'http://vimeo.com/' + id;
+        url = 'https://vimeo.com/' + id;
         break;
     default:
         consoleLog('unsupported promo type');
     }
-    
+
     created = createEmbed(url, domain);
     if (created !== false) {
 
@@ -758,11 +758,11 @@ function isVideo (video_domain) {
     return (Globals.domains.indexOf(video_domain) !== -1);
 }
 
-//http://dreaminginjavascript.wordpress.com/2008/08/22/eliminating-duplicates/
+//https://dreaminginjavascript.wordpress.com/2008/08/22/eliminating-duplicates/
 function filterVideoDupes (arr) {
 
     var i, out=[], obj={}, original_length = arr.length;
-    
+
     //work from last video to first video (so hottest dupe is left standing)
     //first pass on media embed
     for (i=arr.length-1; i>=0; i--) {
@@ -817,7 +817,7 @@ function getThumbnailUrl(chan, video_id) {
         return 'img/nsfw.png';
     }
     else if (Globals.videos[chan].video[video_id].media.oembed) {
-        return Globals.videos[chan].video[video_id].media.oembed.thumbnail_url !== undefined ? 
+        return Globals.videos[chan].video[video_id].media.oembed.thumbnail_url !== undefined ?
             Globals.videos[chan].video[video_id].media.oembed.thumbnail_url :
             'img/noimage.png';
     }
@@ -953,7 +953,7 @@ function prepEmbed(embed, type){
     default:
         return embed;
     }
-    
+
 }
 
 function addListeners (type) {
@@ -1061,7 +1061,7 @@ function addChannel(subreddit){
         var c_data = {'channel': subreddit, feed: feed};
         Globals.channels.push(c_data);
         Globals.user_channels.push(c_data);
-        
+
         $.jStorage.set('user_channels', Globals.user_channels);
 
         var x = Globals.channels.length - 1;
@@ -1094,7 +1094,7 @@ function removeChan(chan){ //by index (integer)
 }
 
 function shuffleChan (chan) { //by index (integer
-    /* 
+    /*
        does not shuffle actual video array
        but rather creates a global array of shuffled keys
     */
@@ -1150,14 +1150,14 @@ function checkAnchor(){
 
 /* Reddit Functions */
 function redditButton(id){
-    var reddit_string="<iframe src=\"http://www.reddit.com/static/button/button1.html?width=120";
+    var reddit_string="<iframe src=\"https://www.reddit.com/static/button/button1.html?width=120";
     reddit_string += '&id=' + id;
     //reddit_string += '&css=' + encodeURIComponent(window.reddit_css);
     //reddit_string += '&bgcolor=' + encodeURIComponent(window.reddit_bgcolor);
     //reddit_string += '&bordercolor=' + encodeURIComponent(window.reddit_bordercolor);
     reddit_string += '&newwindow=' + encodeURIComponent('1');
     reddit_string += "\" height=\"22\" width=\"150\" scrolling='no' frameborder='0'></iframe>";
-    
+
     return reddit_string;
 }
 
@@ -1169,7 +1169,7 @@ function consoleLog(string){
     }
 }
 
-//http://stackoverflow.com/questions/962802/is-it-correct-to-use-javascript-array-sort-method-for-shuffling/962890#962890
+//https://stackoverflow.com/questions/962802/is-it-correct-to-use-javascript-array-sort-method-for-shuffling/962890#962890
 function shuffleArray(array) {
     var tmp, current, top = array.length;
 
@@ -1181,7 +1181,7 @@ function shuffleArray(array) {
             array[top] = tmp;
         }
     }
-    
+
     return array;
 }
 
