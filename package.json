@@ -1,0 +1,10 @@
+{
+  "name": "reddit.tv",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "meteor-node-stubs": "~0.2.0"
+  }
+}
